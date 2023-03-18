@@ -10,7 +10,7 @@ router.get('/',authenticate,async function(req,res){
       client = await mongodClient.connect(url)
       let db = client.db("burntracker")
       let token = req.headers.authorization
-      let user = jwt.verify(token,process.env.Secret)
+      let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
       let userID = user.id
       let exerciseData = await db.collection("exercises").find({userID}).toArray()
       res.json({message:"Exercise Data",exerciseData})
@@ -27,7 +27,7 @@ router.post('/add',authenticate,async function(req,res){
     client = await mongodClient.connect(url)
     let db = client.db("burntracker")
     let token = req.headers.authorization
-    let user = jwt.verify(token,process.env.Secret)
+    let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
     let userID = user.id
     let name = req.body.name
     let type = req.body.type
@@ -50,7 +50,7 @@ router.post('/logs/add',authenticate,async function(req,res){
     client = await mongodClient.connect(url)
     let db = client.db("burntracker")
     let token = req.headers.authorization
-    let user = jwt.verify(token,process.env.Secret)
+    let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
     let exerciseID = req.body.exerciseid
     let datetime = req.body.datetime
     let notes = req.body.notes

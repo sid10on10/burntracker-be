@@ -10,7 +10,7 @@ router.get('/',authenticate,async function(req,res){
       client = await mongodClient.connect(url)
       let db = client.db("burntracker")
       let token = req.headers.authorization
-      let user = jwt.verify(token,process.env.Secret)
+      let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
       let userID = user.id
       let categoryData = await db.collection("categories").find({userID}).toArray()
       res.json({message:"Exercise Data",categoryData})
@@ -27,7 +27,7 @@ router.post('/add',authenticate,async function(req,res){
     client = await mongodClient.connect(url)
     let db = client.db("burntracker")
     let token = req.headers.authorization
-    let user = jwt.verify(token,process.env.Secret)
+    let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
     let userID = user.id
     let name = req.body.name
     let exercises = []
@@ -64,7 +64,7 @@ router.get('/:categoryid/exercises',authenticate,async function(req,res){
       client = await mongodClient.connect(url)
       let db = client.db("burntracker")
       let token = req.headers.authorization
-      let user = jwt.verify(token,process.env.Secret)
+      let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
       let userID = user.id
       let categoryID = req.params.categoryid
       let categoryData = await db.collection("categories").findOne({_id:mongodb.ObjectId(categoryID)})

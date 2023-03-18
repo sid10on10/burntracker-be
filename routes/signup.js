@@ -28,12 +28,12 @@ router.post('/', async function(req, res, next) {
       await db.collection("users").insertOne({
         name,
         email,
-        password
+        password,
+        profile: {}
       })
-      res.json({
+      return res.status(201).json({
         message:"Registration Successful"
       })
-      client.close()
     }
   }catch(error){
     client.close()

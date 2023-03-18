@@ -16,8 +16,9 @@ router.get('/verify',authenticate,async function(req,res){
   try{
     client = await mongodClient.connect(url)
     let db = client.db("burntracker")
-    let token = req.headers.authorization
-    let user = jwt.verify(token,process.env.Secret)
+    console.log(req.body)
+    let token = req.body.token
+    let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
     let userId = user.id
     let userData = await db.collection("users").findOne({_id:mongodb.ObjectId(userId)})
     let userName = userData.name
@@ -35,7 +36,7 @@ router.get('/dashboard',authenticate, async function(req, res, next) {
     client = await mongodClient.connect(url)
     let db = client.db("burntracker")
     let token = req.headers.authorization
-    let user = jwt.verify(token,process.env.Secret)
+    let user = jwt.verify(token,'asknmaofinoinmwrmiwam')
     //console.log(user) { id: '5f8d76579f0fa4264d05c524', iat: 1603115379 }
     let userID = user.id
     let userData = await db.collection("users").findOne({_id:mongodb.ObjectId(userID)})

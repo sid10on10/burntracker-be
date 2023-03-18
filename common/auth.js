@@ -1,7 +1,7 @@
 var jwt=require("jsonwebtoken")
 var authenticate=function(req,res,next){
         if(req.headers.authorization){
-            jwt.verify(req.headers.authorization,process.env.Secret,function(err,decode){
+            jwt.verify(req.headers.authorization,'asknmaofinoinmwrmiwam',function(err,decode){
 
                 if(err){
                     res.json({
