@@ -42,8 +42,7 @@ router.post('/',authenticate,async function(req,res){
               gender,
               dailycalorie,
               weeklycalorie,
-              dailywater,
-              dailycalorieused
+              dailywater
             }
         }
       })
