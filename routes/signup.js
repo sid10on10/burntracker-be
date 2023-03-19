@@ -25,11 +25,16 @@ router.post('/', async function(req, res, next) {
       let salt = await bcryptjs.genSalt(10)
       let hash = await bcryptjs.hash(password,salt)
       password = hash
-      await db.collection("users").insertOne({
+      let data = await db.collection("users").insertOne({
         name,
         email,
         password,
-        profile: {}
+        profile: {},
+      })
+      let userId = data.insertedId
+      await db.collection("exercises").insertOne({
+        userId,
+        logs: {}
       })
       return res.status(201).json({
         message:"Registration Successful"

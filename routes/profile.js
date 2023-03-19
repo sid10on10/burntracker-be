@@ -37,12 +37,12 @@ router.post('/',authenticate,async function(req,res){
             name,
             email,
             profile: {
-                age,
-                mobile,
-                gender,
-                dailycalorie,
-                weeklycalorie,
-                dailywater
+              age,
+              mobile,
+              gender,
+              dailycalorie,
+              weeklycalorie,
+              dailywater
             }
         }
       })
