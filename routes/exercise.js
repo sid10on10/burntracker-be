@@ -53,9 +53,7 @@ router.post('/add',authenticate,async function(req,res){
       newCalorie = calorie
     }
     await db.collection("users").updateOne({_id:mongodb.ObjectId(userID)}, { $set : {
-      profile: {
-        dailycalorieused: newCalorie
-        }
+      'profile.dailycalorieused': newCalorie
       }
     })
     let date = new Date()
